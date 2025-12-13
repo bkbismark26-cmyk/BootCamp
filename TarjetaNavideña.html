@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🎄 Navidad Mágica 🎄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rojo: #b11226;
+      --verde: #0a6b3c;
+      --blanco: #ffffff;
+      --dorado: #f5c542;
+      --fondo: #0f172a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0f172a, #020617);
+      color: var(--blanco);
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 3.5rem;
+      color: var(--dorado);
+      animation: glow 2s infinite alternate;
+    }
+
+    header p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #f5c542; }
+      to { text-shadow: 0 0 25px #f5c542; }
+    }
+
+    /* Luces navideñas */
+    .luces {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .luz {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      animation: parpadear 1.5s infinite alternate;
+    }
+
+    .luz:nth-child(1) { background: red; }
+    .luz:nth-child(2) { background: yellow; animation-delay: .3s; }
+    .luz:nth-child(3) { background: green; animation-delay: .6s; }
+    .luz:nth-child(4) { background: blue; animation-delay: .9s; }
+
+    @keyframes parpadear {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: transform .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--dorado);
+      margin-bottom: 10px;
+    }
+
+    /* Contador */
+    .contador {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .tiempo {
+      background: var(--verde);
+      padding: 20px;
+      border-radius: 15px;
+      min-width: 100px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,.5);
+    }
+
+    .tiempo span {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    /* Árbol */
+    .arbol {
+      margin: 60px auto;
+      width: 0;
+      height: 0;
+      border-left: 80px solid transparent;
+      border-right: 80px solid transparent;
+      border-bottom: 140px solid var(--verde);
+      position: relative;
+      animation: balanceo 3s infinite ease-in-out;
+    }
+
+    .arbol::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: -60px;
+      width: 0;
+      height: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-bottom: 110px solid #0f8a50;
+    }
+
+    .arbol::after {
+      content: '⭐';
+      position: absolute;
+      top: -40px;
+      left: -12px;
+      font-size: 2rem;
+    }
+
+    @keyframes balanceo {
+      0% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+      100% { transform: rotate(-2deg); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #020617;
+      opacity: 0.9;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Feliz Navidad</h1>
+    <p>Una época para compartir, amar y agradecer ✨</p>
+
+    <div class="luces">
+      <div class="luz"></div>
+      <div class="luz"></div>
+      <div class="luz"></div>
+      <div class="luz"></div>
+    </div>
+
+    <div class="contador">
+      <div class="tiempo"><span id="dias">0</span>Días</div>
+      <div class="tiempo"><span id="horas">0</span>Horas</div>
+      <div class="tiempo"><span id="minutos">0</span>Minutos</div>
+      <div class="tiempo"><span id="segundos">0</span>Segundos</div>
+    </div>
+  </header>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom:40px; color:var(--dorado)">¿Qué es la Navidad?</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947" alt="Navidad">
+        <h3>Un tiempo especial</h3>
+        <p>La Navidad es una celebración que representa amor, unión familiar y esperanza. Es un momento para reflexionar y compartir con quienes más queremos.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750" alt="Regalos">
+        <h3>Compartir regalos</h3>
+        <p>Los regalos simbolizan el cariño y la gratitud hacia los demás. No importa el valor, sino el significado.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1482517967863-00e15c9b44be" alt="Familia">
+        <h3>Familia y amigos</h3>
+        <p>La Navidad nos recuerda la importancia de la familia, la amistad y la solidaridad.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom:30px; color:var(--dorado)">Tradiciones Navideñas</h2>
+    <div class="grid">
+      <div class="card"><p>🎄 Decorar el árbol de Navidad</p></div>
+      <div class="card"><p>🎶 Escuchar villancicos</p></div>
+      <div class="card"><p>🍽️ Compartir una cena especial</p></div>
+      <div class="card"><p>🎁 Intercambiar regalos</p></div>
+      <div class="card"><p>🤍 Practicar la solidaridad</p></div>
+      <div class="card"><p>✨ Encender luces navideñas</p></div>
+    </div>
+
+    <div class="arbol"></div>
+  </section>
+
+  <footer>
+    <p>🎄 Que la magia de tus sueños se hagan realidad 🎄</p>
+  </footer>
+
+  <script>
+    function actualizarContador() {
+      const navidad = new Date(new Date().getFullYear(), 11, 25);
+      const ahora = new Date();
+
+      if (ahora > navidad) {
+        navidad.setFullYear(navidad.getFullYear() + 1);
+      }
+
+      const diferencia = navidad - ahora;
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      document.getElementById('dias').textContent = dias;
+      document.getElementById('horas').textContent = horas;
+      document.getElementById('minutos').textContent = minutos;
+      document.getElementById('segundos').textContent = segundos;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
+
+</body>
+</html>
