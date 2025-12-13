@@ -1,0 +1,177 @@
+:root {
+  --rojo: #b11226;
+  --verde: #0a6b3c;
+  --blanco: #ffffff;
+  --dorado: #f5c542;
+  --fondo: #0f172a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: var(--blanco);
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px;
+  position: relative;
+}
+
+header h1 {
+  font-family: 'Mountains of Christmas', cursive;
+  font-size: 3.5rem;
+  color: var(--dorado);
+  animation: glow 2s infinite alternate;
+}
+
+header p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #f5c542; }
+  to { text-shadow: 0 0 25px #f5c542; }
+}
+
+/* Luces navideñas */
+.luces {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.luz {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  animation: parpadear 1.5s infinite alternate;
+}
+
+.luz:nth-child(1) { background: red; }
+.luz:nth-child(2) { background: yellow; animation-delay: .3s; }
+.luz:nth-child(3) { background: green; animation-delay: .6s; }
+.luz:nth-child(4) { background: blue; animation-delay: .9s; }
+
+@keyframes parpadear {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: transform .3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--dorado);
+  margin-bottom: 10px;
+}
+
+/* Contador */
+.contador {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.tiempo {
+  background: var(--verde);
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,.5);
+}
+
+.tiempo span {
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+}
+
+/* Árbol */
+.arbol {
+  margin: 60px auto;
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 140px solid var(--verde);
+  position: relative;
+  animation: balanceo 3s infinite ease-in-out;
+}
+
+.arbol::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: -60px;
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 110px solid #0f8a50;
+}
+
+.arbol::after {
+  content: '⭐';
+  position: absolute;
+  top: -40px;
+  left: -12px;
+  font-size: 2rem;
+}
+
+@keyframes balanceo {
+  0% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+  100% { transform: rotate(-2deg); }
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #020617;
+  opacity: 0.9;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
